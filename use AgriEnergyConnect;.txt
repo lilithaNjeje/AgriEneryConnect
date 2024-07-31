@@ -1,0 +1,107 @@
+use AgriEnergyConnect;
+
+REATE TABLE employees (
+    empId INT IDENTITY(1,1) NOT NULL,
+    empName VARCHAR(100) NOT NULL,
+    empSurname VARCHAR(100) NOT NULL,
+    empEmail VARCHAR(100) NOT NULL,
+    empPassword VARCHAR(1000) NOT NULL
+);
+
+select * from employees;
+
+CREATE TABLE FarmersProducts (
+
+    FProductId INT IDENTITY(1,1) NOT NULL,
+    productName VARCHAR(100) NOT NULL,
+    productCategory VARCHAR(100) NOT NULL,
+    ProductionDate DATE,
+	farmerId int not null,
+	
+	foreign key (farmerId) references  farmers (farmerId)
+   
+);
+
+CREATE TABLE FarmersProducts (
+
+    FProductId INT IDENTITY(1,1) NOT NULL,
+    productName VARCHAR(100) NOT NULL,
+    productCategory VARCHAR(100) NOT NULL,
+    ProductionDate DATE,
+	
+   
+);
+
+select * from FarmersProducts;
+
+select * from farmers;
+
+select * from employees;
+
+
+
+select F.name, F.surname,
+FP.productName, FP.productCategory, FP.productionDate
+
+from FarmersProducts FP
+
+left join farmers F on FP.farmerId = F.farmerId
+group by F.name, F.surname,FP.productName, FP.productCategory, FP.productionDate;
+
+
+select * from farmers;
+
+select * from FarmersProducts;
+
+SELECT TOP (1000) [empId]
+      ,[empName]
+      ,[empSurname]
+      ,[empEmail]
+      ,[empPassword]
+  FROM [AgriEnergyConnect].[dbo].[employees]
+
+ 
+ 
+
+insert all
+
+ into employees(empId, empName, empSurname, empEmail,empPassword)
+ values(1, 'lilitha', 'njeje','lilly.co.za','pass1')
+into employees(empId, empName, empSurname, empEmail,empPassword)
+ values(2, 'amanda', 'vava','vava.co.za','pass1')
+into employees(empId, empName, empSurname, empEmail,empPassword)
+ values(3, 'sima', 'mkele','kele.co.za','pass1')
+into employees(empId, empName, empSurname, empEmail,empPassword)
+  values(4, 'david', 'khoza','khoza.co.za','pass1')
+into employees(empId, empName, empSurname, empEmail,empPassword)
+ values(5, 'john', 'davis','davis.co.za','pass1')
+ Select * from dual;
+ Commit;
+  
+
+  CREATE TABLE employees (
+    empId INT IDENTITY(1,1) NOT NULL,
+    empName VARCHAR(100) NOT NULL,
+    empSurname VARCHAR(100) NOT NULL,
+    empEmail VARCHAR(100) NOT NULL,
+    empPassword VARCHAR(1000) NOT NULL
+);
+
+DROP TABLE employees;
+
+
+-- Enable IDENTITY_INSERT for the employees table
+SET IDENTITY_INSERT employees ON;
+
+INSERT INTO employees (empId, empName, empSurname, empEmail, empPassword)
+VALUES 
+    (1, 'lilitha', 'njeje', 'lilly.co.za', 'pass1'),
+    (2, 'amanda', 'vava', 'vava.co.za', 'pass1'),
+    (3, 'sima', 'mkele', 'kele.co.za', 'pass1'),
+    (4, 'david', 'khoza', 'khoza.co.za', 'pass1'),
+    (5, 'john', 'davis', 'davis.co.za', 'pass1');
+
+
+-- Disable IDENTITY_INSERT for the employees table
+
+

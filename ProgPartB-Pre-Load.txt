@@ -1,0 +1,64 @@
+create database AgriEnergyConnect;
+
+use AgriEnergyConnect;
+
+-- Create employees table
+CREATE TABLE employees (
+    empId INT IDENTITY(1,1) NOT NULL,
+    empName VARCHAR(100) NOT NULL,
+    empSurname VARCHAR(100) NOT NULL,
+    empEmail VARCHAR(100) NOT NULL,
+    empPassword VARCHAR(1000) NOT NULL,
+    PRIMARY KEY (empId)
+);
+
+-- Insert data into employees table
+INSERT INTO employees (empName, empSurname, empEmail, empPassword)
+VALUES
+    ('lilitha', 'njeje', 'lilly.co.za', 'pass1'),
+    ('amanda', 'vava', 'vava.co.za', 'pass2'),
+    ('sima', 'mkele', 'kele.co.za', 'pass3'),
+    ('david', 'khoza', 'khoza.co.za', 'pass4'),
+    ('john', 'davis', 'davis.co.za', 'pass5');
+
+-- Create farmers table
+CREATE TABLE farmers (
+    farmerId INT IDENTITY(1,1) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    surname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(1000) NOT NULL,
+    PRIMARY KEY (farmerId)
+);
+
+-- Insert data into farmers table
+INSERT INTO farmers (name, surname, email, password)
+VALUES
+    ('ntando', 'ngcobo', 'ngcobo.co.za', 'pass1'),
+    ('wandile', 'thela', 'thela.co.za', 'wand12'),
+    ('bruno', 'brian', 'brian.co.za', 'bru123'),
+    ('andile', 'mthembu', 'mthembu.co.za', 'and345'),
+    ('lunga', 'brunos', 'lunga.co.za', 'lunga123');
+
+-- Create FarmersProducts table
+CREATE TABLE FarmersProducts (
+    FProductId INT IDENTITY(1,1) NOT NULL,
+    productName VARCHAR(100) NOT NULL,
+    productCategory VARCHAR(100) NOT NULL,
+    ProductionDate DATE,
+    farmerId INT NOT NULL,
+    PRIMARY KEY (FProductId),
+    FOREIGN KEY (farmerId) REFERENCES farmers(farmerId)
+);
+
+
+select * from FarmersProducts;
+
+INSERT INTO FarmersProducts (productName, productCategory, ProductionDate, farmerId)
+VALUES
+    ('Tomatoes', 'Vegetables', '2024-04-01', 1),
+    ('Corn', 'Grains', '2024-04-02', 2),
+    ('Apples', 'Fruits', '2024-04-03', 3),
+    ('Milk', 'Dairy', '2024-04-04', 4),
+    ('Chicken', 'Poultry', '2024-04-05', 5);
+
